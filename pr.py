@@ -20,7 +20,7 @@ class ExamApp:
         self.update_listbox()
 
     def setup_ui(self):
-        input_frame = ttk.LabelFrame(self.root, text="Ввод данных об экзамене", padding=10)
+        input_frame = ttk.LabelFrame(self.root, text="Ввод данных", padding=10)
         input_frame.pack(fill=tk.X, padx=10, pady=5)
 
         ttk.Label(input_frame, text="Предмет:").grid(row=0, column=0, sticky=tk.W, pady=2)
@@ -46,7 +46,7 @@ class ExamApp:
         add_btn = ttk.Button(input_frame, text="Добавить в библиотеку", command=self.add_exam)
         add_btn.grid(row=5, column=0, columnspan=2, pady=10)
 
-        list_frame = ttk.LabelFrame(self.root, text="Библиотека экзаменов (выбери предмет)", padding=10)
+        list_frame = ttk.LabelFrame(self.root, text="Библиотека (выбери предмет)", padding=10)
         list_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
         self.listbox = tk.Listbox(list_frame, height=6)
@@ -57,7 +57,7 @@ class ExamApp:
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         self.listbox.config(yscrollcommand=scrollbar.set)
 
-        output_frame = ttk.LabelFrame(self.root, text="Анализ и советы", padding=10)
+        output_frame = ttk.LabelFrame(self.root, text="Че имеем", padding=10)
         output_frame.pack(fill=tk.X, padx=10, pady=5)
 
         self.result_label = ttk.Label(output_frame, text="Нажми и увидь",
@@ -72,13 +72,13 @@ class ExamApp:
         strictness = self.strictness_scale.get()
 
         if not subject or not teacher or not date_str:
-            messagebox.showwarning("Ошибка", "Заполните все текстовые поля!")
+            messagebox.showwarning("Ошибка", "Error!")
             return
 
         try:
             datetime.datetime.strptime(date_str, "%d.%m.%Y")
         except ValueError:
-            messagebox.showerror("Ошибка даты", "Используйте формат ДД.ММ.ГГГГ (например, 25.06.2026)")
+            messagebox.showerror("Ошибка даты", "Используйте формат ДД.ММ.ГГГГ (например, 01.01.2026)")
             return
 
         exam_data = {
