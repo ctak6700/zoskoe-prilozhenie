@@ -99,7 +99,7 @@ class ExamApp:
         self.cheat_var.set(False)
         self.strictness_scale.set(0)
 
-        messagebox.showinfo("Найс", "Данные в библиотеку!")
+        messagebox.showinfo("Найс", "Данные в библиотекe!")
 
     def update_listbox(self):
         self.listbox.delete(0, tk.END)
