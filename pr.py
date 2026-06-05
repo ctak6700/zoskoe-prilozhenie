@@ -46,7 +46,7 @@ class ExamApp:
         add_btn = ttk.Button(input_frame, text="Добавить в библиотеку", command=self.add_exam)
         add_btn.grid(row=5, column=0, columnspan=2, pady=10)
 
-        list_frame = ttk.LabelFrame(self.root, text="Библиотека (выбери предмет)", padding=10)
+        list_frame = ttk.LabelFrame(self.root, text="Библиотека ('экзаменов)", padding=10)
         list_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
         self.listbox = tk.Listbox(list_frame, height=6)
