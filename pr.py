@@ -60,7 +60,7 @@ class ExamApp:
         output_frame = ttk.LabelFrame(self.root, text="Анализ и советы", padding=10)
         output_frame.pack(fill=tk.X, padx=10, pady=5)
 
-        self.result_label = ttk.Label(output_frame, text="Выберите экзамен из списка, чтобы увидеть анализ.",
+        self.result_label = ttk.Label(output_frame, text="Нажми и увидь",
                                       justify=tk.LEFT)
         self.result_label.pack(anchor=tk.W)
 
