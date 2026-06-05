@@ -158,7 +158,6 @@ class ExamApp:
         self.result_label.config(text=result_text)
 
     def save_data(self):
-        # Сохраняем данные в JSON файл
         with open(DATA_FILE, "w", encoding="utf-8") as f:
             json.dump(self.exams, f, ensure_ascii=False, indent=4)
 
