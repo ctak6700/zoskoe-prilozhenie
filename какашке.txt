@@ -20,7 +20,6 @@ class ExamApp:
         self.update_listbox()
 
     def setup_ui(self):
-        # --- Фрейм ввода данных ---
         input_frame = ttk.LabelFrame(self.root, text="Ввод данных об экзамене", padding=10)
         input_frame.pack(fill=tk.X, padx=10, pady=5)
 
@@ -47,7 +46,6 @@ class ExamApp:
         add_btn = ttk.Button(input_frame, text="Добавить в библиотеку", command=self.add_exam)
         add_btn.grid(row=5, column=0, columnspan=2, pady=10)
 
-        # --- Фрейм выбора и списка ---
         list_frame = ttk.LabelFrame(self.root, text="Библиотека экзаменов (выбери предмет)", padding=10)
         list_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=5)
 
@@ -59,7 +57,6 @@ class ExamApp:
         scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
         self.listbox.config(yscrollcommand=scrollbar.set)
 
-        # --- Фрейм вывода расчетов ---
         output_frame = ttk.LabelFrame(self.root, text="Анализ и советы", padding=10)
         output_frame.pack(fill=tk.X, padx=10, pady=5)
 
@@ -78,14 +75,12 @@ class ExamApp:
             messagebox.showwarning("Ошибка", "Заполните все текстовые поля!")
             return
 
-        # Проверка правильности формата даты
         try:
             datetime.datetime.strptime(date_str, "%d.%m.%Y")
         except ValueError:
             messagebox.showerror("Ошибка даты", "Используйте формат ДД.ММ.ГГГГ (например, 25.06.2026)")
             return
 
-        # Сохранение в виде словаря
         exam_data = {
             "subject": subject,
             "teacher": teacher,
@@ -98,7 +93,6 @@ class ExamApp:
         self.save_data()
         self.update_listbox()
 
-        # Очистка полей ввода
         self.subject_entry.delete(0, tk.END)
         self.teacher_entry.delete(0, tk.END)
         self.date_entry.delete(0, tk.END)
@@ -120,7 +114,6 @@ class ExamApp:
         index = selection[0]
         exam = self.exams[index]
 
-        # Логика расчетов
         today = datetime.date.today()
         exam_date = datetime.datetime.strptime(exam["date"], "%d.%m.%Y").date()
         days_left = (exam_date - today).days
@@ -136,7 +129,6 @@ class ExamApp:
         else:
             time_status = f"Дней до экзамена: {days_left}"
 
-            # Логика оценки усердности
             if exam["strictness"] > 80 and not exam["can_cheat"]:
                 advice = "Готовиться нужно МАКСИМАЛЬНО усердно. Препод злой, списать нельзя."
             elif days_left < 3 and exam["strictness"] > 50:
@@ -146,7 +138,6 @@ class ExamApp:
             else:
                 advice = "Готовься в стандартном режиме. Распредели билеты по дням."
 
-        # Вывод результата
         result_text = (
             f"Предмет: {exam['subject']}\n"
             f"Преподаватель: {exam['teacher']} (Злость: {exam['strictness']}%)\n"
@@ -162,7 +153,6 @@ class ExamApp:
             json.dump(self.exams, f, ensure_ascii=False, indent=4)
 
     def load_data(self):
-        # Загружаем данные из JSON файла, если он существует
         if os.path.exists(DATA_FILE):
             with open(DATA_FILE, "r", encoding="utf-8") as f:
                 try:
