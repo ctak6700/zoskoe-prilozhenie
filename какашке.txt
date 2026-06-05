@@ -13,7 +13,6 @@ class ExamApp:
         self.root.title("Трекер Экзаменов")
         self.root.geometry("650x550")
 
-        # Библиотека данных (список словарей)
         self.exams = []
         self.load_data()
 
