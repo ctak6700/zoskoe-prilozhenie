@@ -39,7 +39,7 @@ class ExamApp:
         self.cheat_check = ttk.Checkbutton(input_frame, text="Можно списать?", variable=self.cheat_var)
         self.cheat_check.grid(row=3, column=0, columnspan=2, sticky=tk.W, pady=2)
 
-        ttk.Label(input_frame, text="Злость препода (0-100%):").grid(row=4, column=0, sticky=tk.W, pady=2)
+        ttk.Label(input_frame, text="Шкала Лебедевой (0-100%):").grid(row=4, column=0, sticky=tk.W, pady=2)
         self.strictness_scale = tk.Scale(input_frame, from_=0, to=100, orient=tk.HORIZONTAL)
         self.strictness_scale.grid(row=4, column=1, sticky=tk.W + tk.E, pady=2)
 
