@@ -122,21 +122,21 @@ class ExamApp:
 
         if days_left < 0:
             time_status = f"Экзамен прошел {abs(days_left)} дней назад."
-            advice = "Надеюсь, ты его сдал!"
+            advice = "Ну шо, как оно?"
         elif days_left == 0:
-            time_status = "Экзамен СЕГОДНЯ!"
-            advice = "Уже поздно что-то учить, просто верь в себя."
+            time_status = "Прикинь, экз сегодня"
+            advice = "Тут поможет только молитва и ягер."
         else:
             time_status = f"Дней до экзамена: {days_left}"
 
             if exam["strictness"] > 80 and not exam["can_cheat"]:
-                advice = "Готовиться нужно МАКСИМАЛЬНО усердно. Препод злой, списать нельзя."
+                advice = "Сама лебедева принимает, тебе не выжить."
             elif days_left < 3 and exam["strictness"] > 50:
-                advice = "Времени мало! Срочно садись за билеты."
+                advice = "Ну пора бы и начать готовится."
             elif exam["can_cheat"] and exam["strictness"] < 40:
-                advice = "Можно немного расслабиться, есть шанс списать, препод лояльный."
+                advice = "Кемарни, а там когда нибудь и до билетов дойдешь."
             else:
-                advice = "Готовься в стандартном режиме. Распредели билеты по дням."
+                advice = "Думай только о мираже."
 
         result_text = (
             f"Предмет: {exam['subject']}\n"
